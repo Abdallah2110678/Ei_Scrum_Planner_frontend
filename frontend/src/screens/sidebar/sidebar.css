@@ -1,0 +1,235 @@
+/* Sidebar Container */
+.sidebar {
+    width: 250px;
+    background-color: #f8f9fa; /* Light background color */
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    height: calc(100vh - 65px); /* Subtract navbar height */
+    position: fixed; /* Fixed position to stay in place */
+    top: 65px; /* Start below navbar */
+    left: 0; /* Align to the left */
+    overflow-y: auto; /* Enable scrolling if content overflows */
+    transition: all 0.3s ease;
+    z-index: 100; /* Lower than navbar's z-index */
+  }
+  
+  /* Sidebar Header */
+  .sidebar-header {
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e0e0e0; /* Divider line */
+  }
+  
+  .sidebar-header h2 {
+    font-size: 20px;
+    color: #333;
+    margin: 0;
+  }
+  
+  /* Sidebar Menu */
+  .sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  /* Sidebar Item */
+  .sidebar-item {
+    margin-bottom: 10px;
+  }
+  
+  /* Sidebar Link */
+  .sidebar-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #333;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .sidebar-link:hover {
+    background-color: #e9ecef; /* Light hover background */
+    color: #000; /* Darker text on hover */
+  }
+  
+  /* Sidebar Icon */
+  .sidebar-icon {
+    font-size: 18px;
+    margin-right: 10px; /* Space between icon and text */
+  }
+  
+  /* Sidebar Text */
+  .sidebar-text {
+    font-size: 16px;
+  }
+
+  /* Add new styles for collapsed state */
+  .sidebar.collapsed {
+    width: 60px;
+  }
+
+  .sidebar.collapsed .sidebar-text {
+    display: none;
+  }
+
+  .sidebar.collapsed .sidebar-link {
+    justify-content: center;
+  }
+
+  .sidebar.collapsed .sidebar-icon {
+    margin-right: 0;
+  }
+
+  /* Hamburger button styles */
+  .hamburger-button {
+    margin-top: 30px;
+    position: absolute;
+    top: 20px;
+    right: 10px; /* Changed from -15px to -12px to be more visible */
+    width: 30px; /* Slightly smaller width */
+    height: 30px; /* Slightly smaller height */
+    border-radius: 50%;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 101;
+    transition: transform 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .hamburger-button:hover {
+    background-color: #f0f0f0;
+    transform: scale(1.1); /* Slightly enlarge on hover */
+  }
+
+  .sidebar.collapsed .hamburger-button {
+    transform: rotate(180deg);
+    right: 10px; /* Adjust position when collapsed */
+  }
+
+  .hamburger-icon {
+    font-size: 16px; /* Slightly smaller font size */
+    color: #333;
+  }
+
+  /* Update container margins for collapsed state */
+  .backlog-container, .history-container {
+    padding: 30px;
+    margin-top: 65px; /* Add top margin to account for navbar */
+    margin-left: 250px;
+    width: calc(100% - 250px);
+    transition: margin-left 0.3s ease, width 0.3s ease;
+  }
+
+  .sidebar.collapsed ~ .backlog-container,
+  .sidebar.collapsed ~ .history-container {
+    margin-left: 80px;
+    width: calc(100% - 80px);
+  }
+
+  /* Add transition for smooth movement */
+  .sidebar.collapsed .hamburger-button:hover {
+    transform: rotate(180deg) scale(1.1);
+  }
+
+  /* Responsive styles */
+  @media screen and (max-width: 768px) {
+    .sidebar {
+        transform: translateX(0); /* Change this to make sidebar visible by default */
+        width: 60px; /* Start with collapsed width on mobile */
+        padding: 20px 10px; /* Reduce padding on mobile */
+    }
+
+    /* Hide text by default on mobile */
+    .sidebar-text {
+        display: none;
+    }
+
+    /* Center icons */
+    .sidebar-link {
+        justify-content: center;
+    }
+
+    .sidebar-icon {
+        margin-right: 0;
+    }
+
+    /* When expanded on mobile */
+    .sidebar:not(.collapsed) {
+        width: 200px; /* Expand to this width when opened */
+    }
+
+    .sidebar:not(.collapsed) .sidebar-text {
+        display: block; /* Show text when expanded */
+    }
+
+    .sidebar:not(.collapsed) .sidebar-link {
+        justify-content: flex-start; /* Left align when expanded */
+    }
+
+    .sidebar:not(.collapsed) .sidebar-icon {
+        margin-right: 10px; /* Add space between icon and text when expanded */
+    }
+
+    /* Adjust hamburger button */
+    .hamburger-button {
+        position: absolute;
+        top: 20px;
+        right: 10px;
+        left: auto; /* Reset left position */
+        transform: none !important;
+    }
+  }
+
+  /* Update the content margin for mobile */
+  @media screen and (max-width: 768px) {
+    .backlog-container,
+    .history-container,
+    .dashboard-container,
+    .board-container,
+    .timeline-container {
+        margin-left: 60px; /* Match the collapsed sidebar width */
+        width: calc(100% - 60px);
+    }
+
+    /* When sidebar is expanded */
+    .sidebar:not(.collapsed) ~ .backlog-container,
+    .sidebar:not(.collapsed) ~ .history-container,
+    .sidebar:not(.collapsed) ~ .dashboard-container,
+    .sidebar:not(.collapsed) ~ .board-container,
+    .sidebar:not(.collapsed) ~ .timeline-container {
+        margin-left: 200px;
+        width: calc(100% - 200px);
+    }
+  }
+
+  /* Add overlay for mobile when sidebar is open */
+  .sidebar-overlay {
+    display: none;
+  }
+
+  @media screen and (max-width: 768px) {
+    .sidebar-overlay {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 99;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+    }
+
+    .sidebar:not(.collapsed) ~ .sidebar-overlay {
+        opacity: 1;
+        visibility: visible;
+    }
+  }

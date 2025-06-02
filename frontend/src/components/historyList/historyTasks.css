@@ -1,0 +1,229 @@
+.history-task-item {
+    display: grid;
+    grid-template-columns: minmax(200px, 2fr) minmax(80px, 100px) minmax(80px, 100px) 80px 100px 50px 60px 60px 90px;
+    align-items: center;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    gap: 8px;
+    width: 100%;
+    position: relative;
+    min-width: 0;
+    overflow-x: auto;
+}
+
+.history-task-name-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.history-task-name {
+    font-size: 16px;
+    padding: 5px;
+    border-radius: 3px;
+}
+
+/* Styles for disabled fields */
+.task-complexity-select:disabled,
+.task-category-select:disabled,
+.task-status:disabled,
+.priority-input:disabled {
+    background-color: #f5f5f5;
+    opacity: 1;
+    cursor: not-allowed;
+    color: #333;
+    -webkit-text-fill-color: #333;
+    padding: 6px 8px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    font-size: 14px;
+}
+
+/* User Avatar */
+.history-avatar-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+}
+
+.user-avatar {
+    background-color: #FF5733;
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+}
+
+/* Add tooltip styling for the user name */
+.user-avatar:hover::after {
+    content: attr(title);
+    position:static;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    z-index: 1000;
+}
+
+/* Active button */
+.reactivate-button {
+    background-color: #0052cc;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+}
+
+.reactivate-button:hover {
+    background-color: #0065ff;
+}
+
+/* Container for avatar and button */
+.avatar-button-container {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+/* Add styles for category input */
+.task-category-input {
+    width: 80px;
+    min-width: 80px;
+    max-width: 100px;
+    padding: 6px 8px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    font-size: 14px;
+    background-color: #f5f5f5;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.task-category-input:disabled {
+    opacity: 1;
+    cursor: not-allowed;
+    color: #333;
+    -webkit-text-fill-color: #333;
+}
+
+/* Add styles for the estimated effort display */
+.estimated-effort-display {
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+    padding: 6px 8px;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 1200px) {
+    .history-task-item {
+        grid-template-columns: minmax(100px, 1.2fr) 70px 90px 60px 70px 45px 45px 45px 65px;
+        padding: 6px;
+        gap: 10px;
+    }
+
+    .history-task-name {
+        font-size: 14px;
+    }
+
+    .task-complexity-select:disabled,
+    .task-category-select:disabled,
+    .task-status:disabled,
+    .priority-input:disabled,
+    .effort-input:disabled {
+        font-size: 13px;
+        padding: 4px 6px;
+    }
+
+    .task-category-input {
+        width: 90px;
+        min-width: 70px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .history-task-item {
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    .tasks-list {
+        overflow-x: auto;
+        padding-bottom: 12px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .history-task-item {
+        grid-template-columns: minmax(80px, 1fr) 65px 75px 45px 75px 30px 35px 35px 50px;
+        font-size: 12px;
+        padding: 3px;
+        gap: 20px;
+    }
+
+    .user-avatar {
+        width: 28px;
+        height: 28px;
+        font-size: 10px;
+    }
+
+    .reactivate-button {
+        padding: 3px 5px;
+        font-size: 11px;
+        min-width: 40px;
+    }
+
+    .task-category-input {
+        width: px;
+        min-width: 60px;
+        font-size: 13px;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .history-task-item {
+        grid-template-columns: minmax(60px, 1fr) 75px 45px 45px 65px 20px 30px 30px 40px;
+        font-size: 11px;
+        padding: 2px;
+        gap: 25px;
+    }
+
+    .user-avatar {
+        width: 18px;
+        height: 18px;
+        font-size: 9px;
+    }
+
+    .reactivate-button {
+        padding: 2px 3px;
+        font-size: 10px;
+        min-width: 32px;
+    }
+
+    .task-category-input {
+        width: 67px;
+        min-width: 60px;
+        font-size: 13px;
+    }
+}
+

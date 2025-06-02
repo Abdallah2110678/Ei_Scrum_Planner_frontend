@@ -1,0 +1,425 @@
+/* Task List Container */
+.task-list-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 8px;
+}
+
+/* Individual Task Item */
+.task-item {
+    display: grid;
+    grid-template-columns: 2fr 120px 120px 80px 120px 60px 100px 50px;
+    align-items: center;
+    background-color: #fff;
+    padding: 8px;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    gap: 10px;
+    width: 100%;
+    position: relative;
+}
+
+.task-item:hover {
+    background-color: #f8f9fa;
+}
+
+/* Task ID Styling */
+.task-id {
+    font-weight: bold;
+    color: #666;
+}
+
+/* Task Name Section */
+.task-name-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.task-name {
+    font-size: 16px;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 3px;
+    transition: background-color 0.3s ease;
+}
+
+.task-name:hover {
+    background-color: #ddd;
+}
+
+/* Resizable Text Area for Editing Task Name */
+.task-textarea {
+    font-size: 16px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    width: 100%;
+    min-height: 30px;
+    resize: vertical;
+}
+
+/* Task Status Dropdown */
+.task-status {
+    padding: 6px 8px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    background-color: white;
+    font-size: 14px;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+}
+
+.task-status:hover {
+    border-color: #0052cc;
+}
+
+/* Story Points Section */
+.story-points {
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+/* Default Story Points Text */
+.story-points-text {
+    font-size: 14px;
+    font-weight: bold;
+    padding: 5px;
+    border-radius: 3px;
+    transition: background-color 0.3s ease;
+}
+
+/* Tooltip for Story Points (Shown on Hover) */
+.story-points-text:hover::after {
+    content: "Story Points";
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+/* Small Input for Editing Story Points */
+.story-points-input {
+    font-size: 14px;
+    width: 50px;
+    padding: 3px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    text-align: center;
+}
+
+/* User Avatar */
+.user-avatar {
+    background-color: #FF5733;
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+}
+
+/* Delete Button */
+.delete-task {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    color: #666;
+    transition: color 0.3s;
+    padding-left: 10px;
+}
+
+.delete-task:hover {
+    color: #333;
+}
+
+/* Task Dropdown Menu */
+.task-options-button{
+    background-color: #cfcdcd; /* Light gray background */
+  border: 1px solid #dcdcdc; /* Light border */
+  width: 32px; /* Set width */
+  height: 32px; /* Set height */
+  border-radius: 4px; /* Rounded corners */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+  color: #333;
+}
+.task-options-button:hover {
+    background-color: #b6b6b6; /* Slightly darker gray on hover */
+    border-color: #c7c7c7; /* Darker border on hover */
+}
+.task-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: white;
+    border: 1px solid #ccc;
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    min-width: 130px;
+    margin-top: 5px;
+}
+
+/* Dropdown Item */
+.dropdown-item {
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 14px;
+  text-align: left;
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  transition: background 0.3s ease;
+}
+
+.dropdown-item:hover {
+  background-color: #f4f4f4;
+}
+
+/* Move To Section */
+.move-to {
+  position: relative;
+}
+
+/* Updated Position for "Move To" Submenu */
+.move-to-dropdown {
+  position: absolute;
+  right: 100%;  /* Move to the left instead of right */
+  top: 0;
+  background: white;
+  border: 1px solid #ccc;
+  padding: 5px;
+  border-radius: 5px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 101;
+  display: none; /* Hidden by default */
+  flex-direction: column;
+  min-width: 120px;
+}
+
+/* Show the submenu when hovering over "Move To" */
+.move-to:hover .move-to-dropdown {
+  display: flex;
+}
+
+/* Close dropdown when clicking outside */
+.hidden {
+  display: none;
+}
+
+/* Dropdown Select Styles */
+.task-complexity-select,
+.task-category-select,
+.task-status {
+  padding: 6px 8px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  background-color: white;
+  font-size: 14px;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+.task-complexity-select:hover,
+.task-category-select:hover,
+.task-status:hover {
+  border-color: #0052cc;
+}
+
+/* Priority Input Styles */
+.priority-input {
+  width: 60px;
+  padding: 6px 8px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.priority-input::-webkit-inner-spin-button,
+.priority-input::-webkit-outer-spin-button {
+  opacity: 1;
+  height: 20px;
+}
+
+/* Status colors */
+.task-status[value="TO DO"] {
+  color: #0052cc;
+}
+
+.task-status[value="IN PROGRESS"] {
+  color: #ff9900;
+}
+
+.task-status[value="DONE"] {
+  color: #36b37e;
+}
+
+/* Hover states */
+.task-complexity-select:focus,
+.task-category-select:focus,
+.task-status:focus,
+.priority-input:focus {
+  outline: none;
+  border-color: #0052cc;
+  box-shadow: 0 0 0 2px rgba(0, 82, 204, 0.2);
+}
+
+/* Add these styles for read-only fields in history view */
+.readonly {
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    padding: 6px 8px;
+    border-radius: 3px;
+    font-size: 14px;
+    color: #666;
+    pointer-events: none;
+    user-select: none;
+}
+
+.task-complexity-select.readonly,
+.task-category-select.readonly,
+.task-status.readonly,
+.priority-input.readonly {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 32px;
+}
+
+/* Maintain consistent width with editable fields */
+.task-complexity-select.readonly,
+.task-category-select.readonly {
+    width: 120px;
+}
+
+.priority-input.readonly {
+    width: 60px;
+}
+
+.task-status.readonly {
+    width: 100px;
+}
+
+/* Add these styles for disabled fields */
+.task-complexity-select:disabled,
+.task-category-select:disabled,
+.task-status:disabled,
+.priority-input:disabled {
+    background-color: #f5f5f5;
+    opacity: 1;
+    cursor: not-allowed;
+    color: #333;
+    -webkit-text-fill-color: #333;
+}
+
+/* Remove the default disabled appearance in Firefox */
+.task-complexity-select:disabled,
+.task-category-select:disabled,
+.task-status:disabled,
+.priority-input:disabled {
+    -moz-appearance: none;
+}
+
+/* Remove the default disabled appearance in IE */
+.task-complexity-select:disabled::-ms-expand,
+.task-category-select:disabled::-ms-expand,
+.task-status:disabled::-ms-expand {
+    display: none;
+}
+
+/* Add styles for the Active button */
+.reactivate-button {
+    background-color: #0052cc;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+    margin-left: auto; /* This will push the button to the right */
+}
+
+.reactivate-button:hover {
+    background-color: #0065ff;
+}
+
+/* Add these styles for the category input */
+.task-category-input {
+    width: 120px;
+    padding: 6px 8px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    font-size: 14px;
+    background-color: white;
+}
+
+.task-category-input:hover {
+    border-color: #0052cc;
+}
+
+.task-category-input:focus {
+    outline: none;
+    border-color: #0052cc;
+    box-shadow: 0 0 0 2px rgba(0, 82, 204, 0.2);
+}
+
+/* Estimate Button Styling */
+.estimate-button {
+    background-color: #0052cc;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+}
+
+.estimate-button:hover {
+    background-color: #0065ff;
+}
+
+/* Effort Input Styling */
+.effort-input {
+    width: 60px;
+    padding: 6px 8px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.effort-input:focus {
+    outline: none;
+    border-color: #0052cc;
+    box-shadow: 0 0 0 2px rgba(0, 82, 204, 0.2);
+}

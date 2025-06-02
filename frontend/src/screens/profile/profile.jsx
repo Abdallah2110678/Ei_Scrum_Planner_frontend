@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 import { setCredentials } from '../../features/auth/authSlice'; // Make sure the path is correct
-import './Profile.css';
+import './profile.css';
 
 const Profile = () => {
   const { user, userInfo } = useSelector((state) => state.auth);
